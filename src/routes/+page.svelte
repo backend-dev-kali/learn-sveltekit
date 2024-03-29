@@ -1,2 +1,19 @@
+<script lang="ts">
+	import type { PageData } from "./$types";
 
-<h1>Home page</h1>
+    
+export let data:PageData
+$: ({posts}=data)
+</script>
+
+<h1>Posts</h1>
+
+<p>Showing {posts.length} posts</p>
+
+{#each data.posts as {slug,title}}
+    <ul>
+        <li>
+            <a href="/posts/{slug}">{title}</a>
+        </li>
+    </ul>
+{/each}
